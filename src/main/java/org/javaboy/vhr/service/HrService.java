@@ -15,7 +15,9 @@ public class HrService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        System.out.println("username:"+username);
         Hr hr = hrMapper.loadUserByUsername(username);
+        System.out.println("hr:"+hr.toString());
         if (hr == null) {
             throw new UsernameNotFoundException("用户名不存在！");
         }

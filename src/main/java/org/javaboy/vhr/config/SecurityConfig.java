@@ -60,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 })
                 .failureHandler(new AuthenticationFailureHandler() {
                     @Override
-                    public void onAuthenticationFailure(HttpServletRequest httpServletRequest, HttpServletResponse resp, AuthenticationException e) throws IOException, ServletException {
+                    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse resp, AuthenticationException e) throws IOException, ServletException {
                         resp.setContentType("application/json;charset=utf-8");
                         PrintWriter out=resp.getWriter();
                         RespBean respBean = RespBean.error("登录失败！");
@@ -73,6 +73,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         }else if (e instanceof DisabledException) {
                             respBean.setMsg("账户已禁用,请联系管理员！");
                         }else if (e instanceof BadCredentialsException) {
+                            System.out.println(123456);
+                            System.out.println("username:"+request.getParameterValues("username"));
+                            System.out.println("password:"+request.getParameterValues("password"));
+                            System.out.println("requestURL:"+request.getRequestURI());
+                            System.out.println("Protocol:"+request.getProtocol());
+                            System.out.println(request.getInputStream().toString());
+
                             respBean.setMsg("用户名或密码输入错误，请联系管理员");
                         }
                         out.write(new ObjectMapper().writeValueAsString(respBean));

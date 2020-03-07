@@ -112,6 +112,23 @@ public class Hr implements UserDetails {
     }
 
     @Override
+    public String toString() {
+        return "Hr{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", phone='" + phone + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", address='" + address + '\'' +
+                ", enabled=" + enabled +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userface='" + userface + '\'' +
+                ", remark='" + remark + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
+
+    @Override
     @JsonIgnore
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        List<SimpleGrantedAuthority> authorities = new ArrayList<>(roles.size());
