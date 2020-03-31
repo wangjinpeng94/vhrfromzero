@@ -15,6 +15,20 @@ public class Department implements Serializable {
     public Department() {
     }
 
+    @Override
+    public String toString() {
+        return "Department{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", parentId=" + parentId +
+                ", depPath='" + depPath + '\'' +
+                ", enabled=" + enabled +
+                ", isParent=" + isParent +
+                ", children=" + children +
+                ", result=" + result +
+                '}';
+    }
+
     public Department(String name) {
 
         this.name = name;

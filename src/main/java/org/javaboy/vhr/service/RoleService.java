@@ -14,4 +14,12 @@ public class RoleService {
     public List<Role> getAllRoles() {
         return roleMapper.getAllRoles();
     }
+
+    public Integer addRole(Role role) {
+        return roleMapper.insert(role);
+    }
+
+    public Integer deleteRole(Integer rid) {
+        return roleMapper.deleteByPrimaryKey(rid);
+    }
 }

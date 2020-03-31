@@ -24,4 +24,8 @@ public class MenuService {
     public List<Menu> getAllMenus() {
         return  menuMapper.getAllMenus();
     }
+
+    public List<Integer> getMidsByRid(Integer id) {
+        return  menuMapper.getMidsByRid(id);
+    }
 }
