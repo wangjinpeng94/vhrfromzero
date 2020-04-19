@@ -19,11 +19,11 @@ public interface EmployeeMapper {
 
     int updateByPrimaryKey(Employee record);
 //
-    List<Employee> getEmployeeByPage(@Param("page") Integer page, @Param("size") Integer size,@Param("emp") Employee employee, @Param("beginDateScope") Date[] beginDateScope);
+    List<Employee> getEmployeeByPage(@Param("page") Integer page, @Param("size") Integer size,@Param("keyword") String keyword ,@Param("emp") Employee employee, @Param("beginDateScope") Date[] beginDateScope);
 //@Param("emp") Employee employee, @Param("beginDateScope") Date[] beginDateScope
-    Long getTotal();
+    Long getTotal(@Param("keyword") String keyword);
 
-    Integer maxWorkID();
+
 
     Integer addEmps(@Param("list") List<Employee> list);
 
@@ -32,4 +32,6 @@ public interface EmployeeMapper {
     List<Employee> getEmployeeByPageWithSalary(@Param("page") Integer page, @Param("size") Integer size);
 
     Integer updateEmployeeSalaryById(@Param("eid") Integer eid, @Param("sid") Integer sid);
+
+    Integer maxWorkID();
 }

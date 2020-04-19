@@ -134,40 +134,23 @@
 <!--        <if test="beginDateScope !=null">-->
 <!--            and e.beginDate between #{beginDateScope[0]} and #{beginDateScope[1]}-->
 <!--        </if>-->
+        <if test="keyword !=null and keyword != ''">
+            and e.name like concat('%',#{keyword},'%')
+        </if>
         <if test="page !=null and size!=null">
             limit #{page},#{size}
         </if>
+
     </select>
     <select id="getTotal" resultType="java.lang.Long">
         select count(*) from employee e
-        <where>
-            <if test="emp!=null">
-                <if test="emp.name !=null and emp.name!=''">
-                    and e.name like concat('%',#{keyword},'%')
-                </if>
-                <if test="emp.politicId !=null">
-                    and e.politicId =#{emp.politicId}
-                </if>
-                <if test="emp.nationId !=null">
-                    and e.nationId =#{emp.nationId}
-                </if>
-                <if test="emp.jobLevelId !=null">
-                    and e.jobLevelId =#{emp.jobLevelId}
-                </if>
-                <if test="emp.departmentId !=null">
-                    and e.departmentId =#{emp.departmentId}
-                </if>
-                <if test="emp.engageForm !=null and emp.engageForm!=''">
-                    and e.engageForm =#{emp.engageForm}
-                </if>
-                <if test="emp.posId !=null">
-                    and e.posId =#{emp.posId}
-                </if>
-            </if>
-            <if test="beginDateScope !=null">
-                and e.beginDate between #{beginDateScope[0]} and #{beginDateScope[1]}
+        <where >
+            <if test="keyword!=null and keyword!=''">
+                name like concat('%',#{keyword},'%')
             </if>
         </where>
+
+
     </select>
     <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         select
