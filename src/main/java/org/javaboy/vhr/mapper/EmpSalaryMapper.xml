@@ -19,6 +19,10 @@
         delete from empsalary
         where id = #{id,jdbcType=INTEGER}
     </delete>
+    <delete id="deleteEmpByEid" parameterType="java.lang.Integer">
+        delete from empsalary
+        where eid = #{eid,jdbcType=INTEGER}
+    </delete>
     <insert id="insert" parameterType="org.javaboy.vhr.model.EmpSalary">
         insert into empsalary (id, eid, sid)
         values (#{id,jdbcType=INTEGER}, #{eid,jdbcType=INTEGER}, #{sid,jdbcType=INTEGER})

@@ -26,6 +26,9 @@ public class DepartmentService {
 
      departmentMapper.deleteDepById(department);
     }
+    public Integer deleteDepByEid(Integer id){
+       return departmentMapper.deleteByPrimaryKey(id);
+    }
 
     public List<Department> getAllDepartments() {
         return  departmentMapper.getAllDepartmentsByParentId(-1);
